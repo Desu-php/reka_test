@@ -18,8 +18,12 @@ php artisan key:generate
 php artisan storage:link
 npm install
 npm run dev
+```
+edit .env file set database config
+
+```shell
+php artisan migrate
 php artisan serve
 ```
-
 ### URLs:
 - Website: http://127.0.0.1:8000
