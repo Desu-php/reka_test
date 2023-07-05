@@ -8,16 +8,18 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <form action="{{route('index')}}">
-                @foreach($tags as $tag)
-                    <div class="mb-3 form-check">
-                        <input @checked(in_array($tag->id, request()->input('tags', []))) type="checkbox" name="tags[]"
-                               class="form-check-input" id="tag{{$tag->id}}" value="{{$tag->id}}">
-                        <label class="form-check-label" for="tag{{$tag->id}}">{{$tag->name}}</label>
-                    </div>
-                @endforeach
-                <button class="btn btn-primary" type="submit">Фильтр</button>
-            </form>
+            @if($tags->isNotEmpty())
+                <form action="{{route('index')}}">
+                    @foreach($tags as $tag)
+                        <div class="mb-3 form-check">
+                            <input @checked(in_array($tag->id, request()->input('tags', []))) type="checkbox" name="tags[]"
+                                   class="form-check-input" id="tag{{$tag->id}}" value="{{$tag->id}}">
+                            <label class="form-check-label" for="tag{{$tag->id}}">{{$tag->name}}</label>
+                        </div>
+                    @endforeach
+                    <button class="btn btn-primary" type="submit">Фильтр</button>
+                </form>
+            @endif
         </div>
         <div class="col-md-9 row">
             @foreach($todos as $todo)
